@@ -296,6 +296,7 @@ class Pe_local_based_attention_variation(nn.Module):
             v = v + v_xyz  # v.shape == (B, H, N, K, D)
             x = (attention * v).permute(0, 2, 1, 3, 4)  # x.shape == (B, N, H, K, D) element-wise multiplication
             x = x.sum(dim=-2)  # x.shape == (B, N, H, D)
+            print('im here')
 
         elif self.pe_method == 'pe_iv':
             q_xyz = self.linear1(re_xyz).permute(0, 3, 1, 2)  # q_xyz.shape == (B, H, N, K)
@@ -305,7 +306,6 @@ class Pe_local_based_attention_variation(nn.Module):
             k_xyz = self.linear3(re_xyz)  # k_xyz.shape == (B, N, K, C)
             k_xyz = k_xyz.view(q_xyz.shape[0], self.num_heads, q_xyz.shape[1], self.k_depth, q_xyz.shape[2]) # k_xyz.shape == (B, H ,N, D, K)
             k_xyz = k_xyz + k
-            
             '''
             q_repeated = q.repeat(1, 1, 1, k.shape[-1], 1)
             # q_repeated.shape == (B, H, N, K, D) to match with k

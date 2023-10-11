@@ -3,8 +3,7 @@ wandb:
   api_key: 7e17064baa2aaa0cccea0a2159ad51c758b7bf3a  # your wandb api key
   entity: ies_kaige  # the place to save your runs. can be your wandb username or team name
   project: ma_kaige # the name of your project
-  name: seg_formal_local_scalar_add_neighbor_bs8x2_lr1e-4to1e-8_cosLR_adamw_weightdecay1_baseFea_ss_keyOne_scale0 # the name your run
-
+  name: seg_lab_nomean_nostn_formal_local_vector_sub_neighbor_bs8X2_lr1e-4to1e-8_cosLR_adamw_weightdecay1e-4_baseFea_ss_keyOne_scale0
 train:  # only valid when running the training script
   epochs: 200
   lr: 1e-4
@@ -102,19 +101,19 @@ test:  # only valid when running the test script
     world_size: 1  # this is equal to 'nproc_this_node' if you only use one PC
   print_results: true
   visualize_preds:  # only be used in apes
-    enable: false
+    enable: true
     format: png  # png or ply
     vis_which: [0, 4]  # which category to be visualized
     num_vis: 5  # how many point clouds to visualize for one category
   visualize_attention_heatmap:  # only be used in apes
-    enable: false
+    enable: true
     format: png  # png or ply
     vis_which: [0, 4]  # which category to be visualized
     num_vis: 5  # how many point clouds to visualize for one category
 
 
 Point_Embedding:
-  embedding_k: [32, 32]
+  embedding_k: [2, 2]
   point_emb1_in: [6, 128]
   point_emb1_out: [64, 64]
   point_emb2_in: [64, 64]
@@ -122,11 +121,12 @@ Point_Embedding:
 
 Local_CrossAttention_layer:
   enable: true
+  pe_method: ['false', 'false', 'false', 'false']  # need input 'false' or 'pe_i' 'pe_ii' 'pe_iii' or 'pe_iv'
   global_or_local: 'local' # local or global
   single_scale_or_multi_scale: ['ss', 'ss', 'ss', 'ss']  # need input 'ss' or 'ms'
   key_one_or_sep: ['one', 'one', 'one', 'one']  # need input  'one' or 'sep', when single_scale_or_multi_scale = ss, only 'one' is Effective
   shared_ca: [false, false, false, false]  # it must be false when key_one_or_sep = one
-  K: [4, 4, 4, 4]
+  K: [2, 2, 2, 2]
   scale: [0, 0, 0, 0]  # represent different meanings. when single_scale_or_multi_scale is ss, 2 means single 2, when ms 2 means use scale 0 & 1 & 2
   neighbor_selection_method: ['feature', 'feature', 'feature', 'feature']  # feature or coordinate
   neighbor_type: ['diff', 'diff', 'diff', 'diff']  # diff or neighbor or center_diff or center_neighbor or neighbor_diff or center_neighbor_diff
@@ -138,8 +138,8 @@ Local_CrossAttention_layer:
   v_in: [128, 128, 128, 128]
   v_out: [128, 128, 128, 128]
   num_heads: [4, 4, 4, 4]
-  att_score_method: ['local_scalar_dot', 'local_scalar_dot', 'local_scalar_dot', 'local_scalar_dot']  # local_scalar_dot or local_scalar_sub or local_scalar_add or local_scalar_cat or local_vector_sub or local_vector_add
-  ff_conv1_channels_in: [128, 128, 128, 128]                                  # global_dot or global_sub
+  att_score_method: ['local_vector_sub', 'local_vector_sub', 'local_vector_sub', 'local_vector_sub']  # local_scalar_dot or local_scalar_sub or local_scalar_add or local_scalar_cat or local_vector_sub or local_vector_add
+  ff_conv1_channels_in: [128, 128, 128, 128]                                                          # global_dot or global_sub
   ff_conv1_channels_out: [512, 512, 512, 512]  #input x 4
   ff_conv2_channels_in: [512, 512, 512, 512]
   ff_conv2_channels_out: [128, 128, 128, 128]
