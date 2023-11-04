@@ -18,12 +18,6 @@ from torch.utils.data import Dataset
 
 
 # ================================================================================
-# Yi650M shapenet dataloader
-
-
-
-
-# ================================================================================
 # AnTao350M shapenet dataloader
 
 def download_shapenet_AnTao350M(url, saved_path):
@@ -447,6 +441,8 @@ class ShapeNet_Yi650M(torch.utils.data.Dataset):
         return pcd, seg_label, category_onehot
 
 
+# ================================================================================
+# Yi650M shapenet dataloader
 def get_shapenet_dataset_Yi650M(saved_path, mapping, selected_points, fps_enable, augmentation, num_aug, jitter,
                                 std, clip, rotate, which_axis, angle_range, translate, x_translate_range,
                                 y_translate_range, z_translate_range, anisotropic_scale, x_scale_range, y_scale_range,
