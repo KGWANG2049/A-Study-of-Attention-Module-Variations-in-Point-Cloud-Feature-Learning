@@ -20,18 +20,23 @@ The following basic framework of classification and segmentation is implemented 
   <br>
   <em>Base_framework for classification and segmentation</em>
 </p>
-In models/modelnet_model.py and models/shapenet_model.py, we implement the construction of multiple variants of the attention mechanism. It includes 4 global-based attention mechanisms and 6 local-based attention mechanisms. The local attention mechanism includes 4 scalar-based attention modules and 2 vector-based attention modules. (The global attention mechanism methods ii and iii are not given codes due to the dimension explosion problem, you can easily implement it by analogy to the codes of methods i and iv)
+In models/modelnet_model.py and models/shapenet_model.py, we implement the construction of multiple variants of the attention mechanism. It includes 4 global-based attention mechanisms and 6 local-based attention mechanisms. The local attention mechanism includes 4 scalar-based attention modules and 2 vector-based attention modules. (The global attention mechanism methods ii and iii are not given codes due to the dimension explosion problem, you can easily implement them by analogy to the codes of methods i and iv).
 <p align="center">
-  <img src="figures/global_based_attention_module.png" alt="base_framework.png" width="60%" height="auto">
+  <img src="figures/global_based_attention_module.png" alt="global-based attention module" width="60%" height="auto">
   <br>
   <em>global-based attention module</em>
 </p>
 <p align="center">
-  <img src="figures/local_based_attention_module.png" alt="base_framework.png" width="60%" height="auto">
+  <img src="figures/local_based_attention_module.png" alt="Local-based attention module" width="60%" height="auto">
   <br>
   <em>Local-based attention module</em>
 </p>
-
+In addition, for each attention mechanism, we have embedded a rich position encoding method, you can turn it on or off in the configuration file.
+<p align="center">
+  <img src="figures/position_encoding.png" alt="figures/position_encoding.png" width="60%" height="auto">
+  <br>
+  <em>Position_encoding</em>
+</p>
 # Setup
 Python version: 3.9
 ```bash
