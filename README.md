@@ -20,7 +20,7 @@ The following basic framework of classification and segmentation is implemented 
   <br>
   <em>Base_framework for classification and segmentation</em>
 </p>
-In [models/modelnet_model.py](https://github.com/KGWANG2049/A-Study-of-Attention-Module-Variations-in-Point-Cloud-Feature-Learning/blob/main/models/modelnet_model.py) and [models/shapenet_model.py](models/shapenet_model.py), we implement the construction of multiple variants of the attention mechanism. It includes 4 global-based attention mechanisms and 6 local-based attention mechanisms. The local attention mechanism includes 4 scalar-based attention modules and 2 vector-based attention modules. (The global attention mechanism methods ii and iii are not given codes due to the dimension explosion problem, you can easily implement them by analogy to the codes of methods i and iv).<br><br>
+In [`modelnet_model.py`](https://github.com/KGWANG2049/A-Study-of-Attention-Module-Variations-in-Point-Cloud-Feature-Learning/blob/main/models/modelnet_model.py) and [models/shapenet_model.py](models/shapenet_model.py), we implement the construction of multiple variants of the attention mechanism. It includes 4 global-based attention mechanisms and 6 local-based attention mechanisms. The local attention mechanism includes 4 scalar-based attention modules and 2 vector-based attention modules. (The global attention mechanism methods ii and iii are not given codes due to the dimension explosion problem, you can easily implement them by analogy to the codes of methods i and iv).<br><br>
 <p align="center">
   <img src="figures/global_based_attention_module.png" alt="global-based attention module" width="60%" height="auto">
   <br>
