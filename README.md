@@ -15,6 +15,11 @@
 
 # Framework
 The following basic framework of classification and segmentation is implemented in the first-level directory of the model file.
+<p align="center">
+  <img src="figures/base_framework.png" alt="图片替代文字">
+  <br>
+  <em>这里是图片的文字注释</em>
+</p>
 
 
 # Setup
