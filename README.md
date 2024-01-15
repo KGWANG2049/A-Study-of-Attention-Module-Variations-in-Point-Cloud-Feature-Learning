@@ -39,7 +39,7 @@ In addition, for each attention mechanism, we have embedded a rich position enco
 </p><br><br>
 For the segmentation task, in addition to the basic framework, we built a new framework that includes up and downsampling. You can view the segpart_newmodule folder and replace part of the code of the basic framework with the files in the segpart_newmodule folder.<br><be>
 <p align="center">
-  <img src="figures/down_up_module.pdf" alt="figures/down_up_module.pdf" width="60%" height="auto">
+  <img src="figures/seg_new_framework.png" alt="figures/seg_new_framework.png" width="60%" height="auto">
   <br>
   <em>New framework for the segmentation task</em>
 </p><br><br>
