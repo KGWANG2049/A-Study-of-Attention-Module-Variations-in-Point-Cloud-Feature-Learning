@@ -37,6 +37,7 @@ In addition, for each attention mechanism, we have embedded a rich position enco
   <br>
   <em>Position encoding</em>
 </p>
+
 # Setup
 Python version: 3.9
 ```bash
