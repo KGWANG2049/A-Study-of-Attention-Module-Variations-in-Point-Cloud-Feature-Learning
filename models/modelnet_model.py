@@ -388,21 +388,21 @@ class Local_CrossAttention_Layer(nn.Module):
             neighbors, idx_all = ops.select_neighbors_single_scale(pcd, coordinate, self.K, self.scale,
                                                                    self.neighbor_selection_method,
                                                                    self.neighbor_type)
-            neighbors = neighbors.permute(0, 3, 1, 2)  # neighbor.shape == (B, num x C, N, K)
+            neighbors = neighbors.permute(0, 3, 1, 2)  # neighbor.shape == (B, num_fea_tpe x C, N, K)
             x_out = self.ca(pcd, neighbors, idx_all, coordinate)  # x_out.shape == (B, C, N)
 
         elif self.single_scale_or_multi_scale == 'ms':
             if self.key_one_or_sep == 'one':
                 neighbors, idx_all = ops.select_neighbors_in_one_key(pcd, coordinate, self.K, self.scale,
                                                                      self.neighbor_selection_method, self.neighbor_type)
-                neighbors = neighbors.permute(0, 3, 1, 2)  # neighbor.shape == (B, num x C, N, (scale+1) x K)
+                neighbors = neighbors.permute(0, 3, 1, 2)  # neighbor.shape == (B, num_fea_tpe x C, N, (scale+1) x K)
                 x_out = self.ca(pcd, neighbors, idx_all, coordinate)  # x_out.shape == (B, C, N)
             elif self.key_one_or_sep == 'sep':
                 neighbors, idx_all = ops.select_neighbors_in_separate_key(pcd, coordinate, self.K, self.scale,
                                                                           self.neighbor_selection_method,
                                                                           self.neighbor_type)
-                neighbors = neighbors.permute(0, 3, 1, 2)  # neighbor.shape == (B, num x C, N, (scale+1) x K)
-                neighbor_list = ops.list_generator(neighbors, self.K, self.scale)  # element shape in list == (B, num x C, N, K)
+                neighbors = neighbors.permute(0, 3, 1, 2)  # neighbor.shape == (B, num_fea_tpe x C, N, (scale+1) x K)
+                neighbor_list = ops.list_generator(neighbors, self.K, self.scale)  # element shape in list == (B, num_fea_tpe x C, N, K)
                 x_output_list = []
                 if self.shared_ca:
                     for neighbors in neighbor_list:
