@@ -13,6 +13,10 @@
     <img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" /></a>
 </p>
 
+# Framework
+The following basic framework of classification and segmentation is implemented in the first-level directory of the model file.
+
+
 # Setup
 Python version: 3.9
 ```bash
