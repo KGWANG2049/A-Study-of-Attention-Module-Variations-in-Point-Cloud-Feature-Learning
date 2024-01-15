@@ -407,7 +407,7 @@ class Pe_global_based_attention_variation(nn.Module):
             v_xyz = self.conv2(xyz)  # v_xyz.shape == (B, C, N)
             v_xyz = v_xyz.view(v_xyz.shape[0], self.num_heads, self.q_depth, v_xyz.shape[2])  # v_xyz.shape == (B, H, D, N)
             v_xyz = v_xyz.permute(0, 1, 3, 2)  # v_xyz.shape == (B, H, N, D)
-            v = v + v_xyz
+            v = v + v_xyz  # v.shape == (B, H, N, D)
             x = (attention @ v).permute(0, 2, 1, 3)  # x.shape == (B, N, H, D)
 
         elif self.pe_method == 'pe_iii':
@@ -421,7 +421,7 @@ class Pe_global_based_attention_variation(nn.Module):
             v_xyz = self.conv2(xyz)
             v_xyz = v_xyz.view(v_xyz.shape[0], self.num_heads, self.q_depth, v_xyz.shape[2])  # v_xyz.shape == (B, H, D, N)
             v_xyz = v_xyz.permute(0, 1, 3, 2)  # v_xyz.shape == (B, H, N, D)
-            v = v + v_xyz
+            v = v + v_xyz  # v.shape == (B, H, N, D)
             x = (attention @ v).permute(0, 2, 1, 3)  # x.shape == (B, N, H, D)
 
         elif self.pe_method == 'pe_iv':
@@ -439,7 +439,7 @@ class Pe_global_based_attention_variation(nn.Module):
             v_xyz = self.conv2(xyz)
             v_xyz = v_xyz.view(v_xyz.shape[0], self.num_heads, self.q_depth, v_xyz.shape[2])  # x.shape == (B, H, D, N)
             v_xyz = v_xyz.permute(0, 1, 3, 2)  # v_xyz.shape == (B, H, N, D)
-            v = v + v_xyz
+            v = v + v_xyz  # v.shape == (B, H, N, D)
             x = (attention @ v).permute(0, 2, 1, 3)  # x.shape == (B, N, H, D)
         return x
 
@@ -457,7 +457,7 @@ class Pe_global_based_attention_variation(nn.Module):
             v_xyz = self.conv2(xyz)
             v_xyz = v_xyz.view(v_xyz.shape[0], self.num_heads, self.q_depth, v_xyz.shape[2])  # v_xyz.shape == (B, H, D, N)
             v_xyz = v_xyz.permute(0, 1, 3, 2)  # v_xyz.shape == (B, H, N, D)
-            v = v + v_xyz
+            v = v + v_xyz  # v.shape == (B, H, N, D)
             x = (attention @ v).permute(0, 2, 1, 3)  # x.shape == (B, N, H, D)
 
         elif self.pe_method == 'pe_iii':
@@ -475,7 +475,7 @@ class Pe_global_based_attention_variation(nn.Module):
             v_xyz = self.conv2(xyz)
             v_xyz = v_xyz.view(v_xyz.shape[0], self.num_heads, self.q_depth, v_xyz.shape[2])  # v_xyz.shape == (B, H, D, N)
             v_xyz = v_xyz.permute(0, 1, 3, 2)  # v_xyz.shape == (B, H, N, D)
-            v = v + v_xyz
+            v = v + v_xyz  # v.shape == (B, H, N, D)
             x = (attention @ v).permute(0, 2, 1, 3)  # x.shape == (B, N, H, D)
 
         elif self.pe_method == 'pe_iv':
@@ -497,6 +497,6 @@ class Pe_global_based_attention_variation(nn.Module):
             v_xyz = self.conv2(xyz)
             v_xyz = v_xyz.view(v_xyz.shape[0], self.num_heads, self.q_depth, v_xyz.shape[2])  # v_xyz.shape == (B, H, D, N)
             v_xyz = v_xyz.permute(0, 1, 3, 2)  # v_xyz.shape == (B, H, N, D)
-            v = v + v_xyz
+            v = v + v_xyz  # v.shape == (B, H, N, D)
             x = (attention @ v).permute(0, 2, 1, 3)  # x.shape == (B, N, H, D)
         return x
