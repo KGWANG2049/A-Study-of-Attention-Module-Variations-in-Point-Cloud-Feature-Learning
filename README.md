@@ -8,8 +8,6 @@
 <a href="https://pytorch.org/">
     <img src="https://img.shields.io/badge/Framework-PyTorch-orange" /></a>
 <a href="https://mmengine.readthedocs.io/en/latest/">
-    <img src="https://img.shields.io/badge/Framework-MMEngine-ff69b4" /></a>
-<a href="https://github.com/JunweiZheng93/APES/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" /></a>
 </p>
 
